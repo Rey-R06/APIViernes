@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "teachers")
 public class Teacher {
 
     @Id
@@ -17,6 +18,11 @@ public class Teacher {
     @OneToMany(mappedBy = "teacher")
     @JsonManagedReference
     private List<Course> courses;
+
+    @OneToOne
+    @JoinColumn(name = "fk_user", referencedColumnName = "id_user")
+    @JsonManagedReference(value = "teacher-user")
+    private User user;
 
     public Teacher() {
     }

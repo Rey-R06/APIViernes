@@ -1,9 +1,10 @@
 package com.example.APIClassRoom.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "student")
+@Table(name = "students")
 public class Student {
 
     @Id
@@ -12,7 +13,8 @@ public class Student {
     private Integer id;
 
     @OneToOne
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
+    @JoinColumn(name = "fk_user", referencedColumnName = "id_user", nullable = false)
+    @JsonManagedReference(value = "student-user")
     private User user;
 
     @Column(name = "grade", nullable = false)

@@ -1,29 +1,28 @@
 package com.example.APIClassRoom.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "courses")
-public class Course {
-
+@Table(name = "subjects")
+public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_course")
+    @Column(name = "id_subject")
     private Integer id;
+
+    @Column(nullable = false, length = 100)
     private String name;
 
     @ManyToOne
-    @JoinColumn(name="fk_teacher", referencedColumnName = "id_teacher")
-    @JsonBackReference
-    Teacher teacher;
+    @JoinColumn(name = "id_course", nullable = false)
+    private Course course;
 
-    public Course() {
-    }
+    public Subject(){}
 
-    public Course(Integer id, String name) {
+    public Subject(Integer id, String name, Course course){
         this.id = id;
         this.name = name;
+        this.course = course;
     }
 
     public Integer getId() {
@@ -38,5 +37,12 @@ public class Course {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }
