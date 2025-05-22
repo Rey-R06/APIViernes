@@ -1,0 +1,16 @@
+localhost:8080/users
+{
+  "name": "simon",
+  "email": "",
+  "password": "",
+  "phone": "",
+  "userType": ""
+}
+
+localhost:8080/teachers
+{
+    "speciality": "ingeniero",
+    "id": {
+        "id": "1"
+    }
+}
